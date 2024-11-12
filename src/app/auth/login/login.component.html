@@ -1,23 +1,52 @@
 <div class="login-container">
   <div class="left-side">
     <div class="login-form">
+      <h2>Login</h2>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <label for="email">Email:</label>
-        <input id="email" type="email" formControlName="email" placeholder="Enter your email">
-        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
-          Please enter a valid email address.
+        <!-- Campo de Email -->
+        <div class="field">
+          <label for="email">Email</label>
+          <input
+            pInputText
+            id="email"
+            type="text"
+            formControlName="email"
+            placeholder="Enter your email"
+          />
+          <small
+            *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+            class="error"
+          >
+            Please enter a valid email address.
+          </small>
         </div>
 
-        <label for="password">Password:</label>
-        <input id="password" type="password" formControlName="password" placeholder="Enter your password">
-        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
-          Password must be at least 6 characters.
+        <!-- Campo de Password -->
+        <div class="field">
+          <label for="password">Password</label>
+          <p-password
+            formControlName="password"
+            id="password"
+            [feedback]="false"
+            placeholder="Enter your password"
+          ></p-password>
+          <small
+            *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+            class="error"
+          >
+            Password must be at least 6 characters.
+          </small>
         </div>
 
-        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        <!-- Botón de Login -->
+        <button
+          pButton
+          type="submit"
+          label="Login"
+          [disabled]="loginForm.invalid"
+          class="p-mt-3"
+        ></button>
       </form>
     </div>
-  </div>
-  <div class="right-side">
   </div>
 </div>
